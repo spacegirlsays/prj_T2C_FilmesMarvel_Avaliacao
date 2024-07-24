@@ -1,0 +1,199 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="sq_EmailRelatorioErro" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Array com todos os caminhos das screenshots tiradas durante o processo." Name="arg_inArrScreenshotFiles" Type="InArgument(s:String[])" />
+    <x:Property sap2010:Annotation.AnnotationText="Destinatário que deve receber o e-mail" Name="arg_inStrDestinatario" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Username para login no email do robô" Name="arg_inStrUsername" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Senha da conta do email do robô" Name="arg_inSecSecurePassword" Type="InArgument(ss:SecureString)" />
+    <x:Property sap2010:Annotation.AnnotationText="Assunto do e-mail" Name="arg_inStrAssuntoEmail" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Nome do projeto" Name="arg_inStrNomeProjeto" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Hora do final da execução" Name="arg_inDatHoraFinal" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="Hora do inicio da execução" Name="arg_inDatHoraInicio" Type="InArgument(s:DateTime)" />
+    <x:Property sap2010:Annotation.AnnotationText="Corpo do Email" Name="arg_inStrCorpoEmail" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:sq_EmailRelatorioErro.arg_inStrDestinatario>
+    <InArgument x:TypeArguments="x:String" />
+  </this:sq_EmailRelatorioErro.arg_inStrDestinatario>
+  <this:sq_EmailRelatorioErro.arg_inStrUsername>
+    <InArgument x:TypeArguments="x:String" />
+  </this:sq_EmailRelatorioErro.arg_inStrUsername>
+  <this:sq_EmailRelatorioErro.arg_inSecSecurePassword>
+    <InArgument x:TypeArguments="ss:SecureString" />
+  </this:sq_EmailRelatorioErro.arg_inSecSecurePassword>
+  <this:sq_EmailRelatorioErro.arg_inStrAssuntoEmail>
+    <InArgument x:TypeArguments="x:String" />
+  </this:sq_EmailRelatorioErro.arg_inStrAssuntoEmail>
+  <this:sq_EmailRelatorioErro.arg_inStrNomeProjeto>
+    <InArgument x:TypeArguments="x:String" />
+  </this:sq_EmailRelatorioErro.arg_inStrNomeProjeto>
+  <this:sq_EmailRelatorioErro.arg_inDatHoraFinal>
+    <InArgument x:TypeArguments="s:DateTime" />
+  </this:sq_EmailRelatorioErro.arg_inDatHoraFinal>
+  <this:sq_EmailRelatorioErro.arg_inDatHoraInicio>
+    <InArgument x:TypeArguments="s:DateTime" />
+  </this:sq_EmailRelatorioErro.arg_inDatHoraInicio>
+  <this:sq_EmailRelatorioErro.arg_inStrCorpoEmail>
+    <InArgument x:TypeArguments="x:String" />
+  </this:sq_EmailRelatorioErro.arg_inStrCorpoEmail>
+  <sap:VirtualizedContainerService.HintSize>1108,886</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="64">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="76">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>WindowsFormsIntegration</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Faz o output da DataTable para um arquivo Excel e envia o e-mail com as informações dos erros" DisplayName="wf_Send_EmailFinal" sap:VirtualizedContainerService.HintSize="438,821" sap2010:WorkflowViewState.IdRef="Sequence_70">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke sq_Write_Log_InicioFim workflow" sap:VirtualizedContainerService.HintSize="376,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows_T2C\wf_Write_LogInicioFim.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_inStrWfName">wf_Send_EmailFinal</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="arg_inBooInicio">True</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out - Gmail" sap:VirtualizedContainerService.HintSize="376,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_71">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentsCollection="[arg_inArrScreenshotFiles]" Body="[String.Format(arg_inStrCorpoEmail, arg_inStrNomeProjeto, arg_inDatHoraInicio.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;), arg_inDatHoraFinal.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;))]" DisplayName="Send Email Final" Email="[arg_inStrUsername]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_3" IgnoreCRL="False" IsBodyHtml="True" Port="587" SecureConnection="Auto" SecurePassword="[arg_inSecSecurePassword]" Server="smtp.gmail.com" Subject="[arg_inStrAssuntoEmail]" To="[arg_inStrDestinatario]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                <InArgument x:TypeArguments="x:String">Data\Input\Relatório_Analítico.xlsx</InArgument>
+              </scg:List>
+            </ui:SendMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendMail>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:RetryScope DisplayName="Retry Scope - Email Final" sap:VirtualizedContainerService.HintSize="376,353" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[arg_inArrScreenshotFiles]" Body="[String.Format(arg_inStrCorpoEmail, arg_inStrNomeProjeto, arg_inDatHoraInicio.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;), arg_inDatHoraFinal.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;))]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,146" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal" Subject="[arg_inStrAssuntoEmail]" To="[arg_inStrDestinatario]">
+            <ui:SendOutlookMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String">Data\Output\Filmes.xlsx</Literal>
+                </InArgument>
+              </scg:List>
+            </ui:SendOutlookMail.Files>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:SendOutlookMail>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke sq_Write_Log_InicioFim workflow" sap:VirtualizedContainerService.HintSize="376,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows_T2C\wf_Write_LogInicioFim.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_inStrWfName">wf_Send_EmailFinal</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="arg_inBooInicio">False</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>
